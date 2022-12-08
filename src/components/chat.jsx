@@ -45,7 +45,7 @@ export default () => {
             <div className="chat-footer">
 
                 <div className="footer-pre">
-                    <div className="chat-header-btn">
+                    <div className="chat-header-btn" style={{marginLeft:'20px'}}>
                         <AddCircleIcon style={{color: '#919191'}} />
                     </div>
                 </div>
