@@ -198,3 +198,7 @@ body {
     outline-width: 0;
     box-shadow: none;
 }
+
+.active {
+    background-color: #40444b;
+}

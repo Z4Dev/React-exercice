@@ -11,7 +11,7 @@ import {HiUserAdd,HiInbox,HiCloudDownload} from "react-icons/hi";
 
 const Home = () => {
     const [serverlist, setServerList] = useState([{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{}]);
-    const [userlist, setUserList] = useState([{}]);
+    const [userlist, setUserList] = useState([{userid: '852347582768262'}]);
     const [activechat, setActiveChat] = useState({})
     return (
         <div className="app">
@@ -43,12 +43,18 @@ const Home = () => {
 
                         <div className="directmessages mt-4 justify-center ">MENSAGENS DIRETAS</div>
                         {userlist.map((item, key) => (
-                            <User key={key}/>
+                            <User 
+                            key={key} 
+                            active = {activechat.userid == userlist[key].userid}
+                            onClick={() => setActiveChat(userlist[key])}
+                            />
                         ))}
                     </div>
                 </div>
             </div>
-            <Chat/>
+            {activechat.userid !== undefined &&
+                <Chat/>
+            }
         </div>
     )
 }
