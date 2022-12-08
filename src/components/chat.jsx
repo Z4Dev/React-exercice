@@ -6,7 +6,18 @@ import AddCircleIcon from '@mui/icons-material/AddCircle';
 import EmojiEmotionsIcon from '@mui/icons-material/EmojiEmotions';
 import GifBoxIcon from '@mui/icons-material/GifBox';
 
+import EmojiPicker from 'emoji-picker-react';
+
+import { useState } from 'react';
+
 export default () => {
+
+    const [menuemoji,setmenuemoji] = useState(false)
+
+    const handleemojiclick = () => {
+        setmenuemoji(menuemoji?false:true)
+    }
+
     return (
         <div className="chati">
 
@@ -35,15 +46,22 @@ export default () => {
                     </div>
 
                 </div>
-               
             </div>
 
             <div className="chat-body">
                 
             </div>
 
+            <div className="emojiarea" style={{height: menuemoji?'450px':'0px'}}>
+                    <EmojiPicker
+                        searchDisabled={true}
+                        skinTonesDisabled={true}
+                        theme={'dark'}
+                        width={'350px'}
+                        searchPlaceholder={'TESTE'}
+                    />
+                </div>    
             <div className="chat-footer">
-
                 <div className="footer-pre">
                     <div className="chat-header-btn" style={{marginLeft:'20px'}}>
                         <AddCircleIcon style={{color: '#919191'}} />
@@ -55,15 +73,16 @@ export default () => {
                 </div>
 
                 <div className="footer-pos">
-                    <div className="chat-header-btn">
+                    <div className="chat-header-btn" onClick={handleemojiclick}>
                         <EmojiEmotionsIcon style={{color: '#919191'}} />
                     </div>
                     <div className="chat-header-btn">
                         <GifBoxIcon style={{color: '#919191'}} />
                     </div>
-                </div>
-
+                </div> 
             </div>
+    
+            
         </div>
     )
 }

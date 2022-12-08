@@ -10,6 +10,7 @@
   "dependencies": {
     "@emotion/styled": "^11.10.5",
     "@mui/icons-material": "^5.10.16",
+    "emoji-picker-react": "^4.4.7",
     "flowbite": "^1.5.5",
     "flowbite-react": "^0.3.7",
     "git": "^0.1.5",

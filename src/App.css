@@ -152,7 +152,8 @@ body {
 }
 
 .chat-header-btn {
-    width: 40px
+    width: 40px;
+    cursor: pointer;
 }
 
 .chat-body {
@@ -201,4 +202,17 @@ body {
 
 .active {
     background-color: #40444b;
+}
+
+.emojiarea {
+    overflow-y: hidden;
+    position: relative;
+    margin-left: 75%;
+    transition: all ease 0.3s;
+    margin-bottom: 20px;
+    z-index: 999999;
+}
+
+.EmojiPickerReact.epr-dark-theme {
+    background-color: #2f3136;
 }
