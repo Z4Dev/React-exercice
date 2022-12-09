@@ -287,8 +287,8 @@ body {
 .infos_user {
     background-color: #292b2f;
     position: absolute;
-    left: 5.5vw;
-    top: 91.4%;
+    left: calc(1.4% * 4);
+    top: calc(23% * 4);
     width: 240px;
     height: 52px;
     justify-content: center;
