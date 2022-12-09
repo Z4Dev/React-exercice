@@ -207,7 +207,7 @@ body {
     width: auto;
     height: auto;
     left: calc(17% * 4);
-    position: absolute;
+    position: static;
     transition: all ease 0.3s;
     max-width: 100% !important;
     max-height: 100% !important;
