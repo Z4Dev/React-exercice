@@ -207,11 +207,11 @@ body {
     width: auto;
     height: auto;
     left: calc(17% * 4);
-    position: static;
+    position: absolute;
     transition: all ease 0.3s;
     max-width: 100% !important;
     max-height: 100% !important;
-    top: calc(10vh * 5);
+    top: 50%;
     z-index: 3;
     transform: translate(10%, -50%);
 }
