@@ -211,7 +211,7 @@ body {
     transition: all ease 0.3s;
     max-width: 100% !important;
     max-height: 100% !important;
-    top: calc(14% * 4);
+    top: calc(10vh * 5);
     z-index: 3;
     transform: translate(10%, -50%);
 }
