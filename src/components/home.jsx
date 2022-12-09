@@ -4,6 +4,9 @@ import Servericon from './Servericon'
 import User from './user'
 import Chat from './chat'
 
+import SettingsIcon from '@mui/icons-material/Settings';
+import HeadphonesIcon from '@mui/icons-material/Headphones';
+import MicIcon from '@mui/icons-material/Mic';
 
 import {useState} from 'react';
 import {ListGroup} from 'flowbite-react'
@@ -11,7 +14,7 @@ import {HiUserAdd,HiInbox,HiCloudDownload} from "react-icons/hi";
 
 const Home = () => {
     const [serverlist, setServerList] = useState([{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{}]);
-    const [userlist, setUserList] = useState([{userid: '852347582768262'}]);
+    const [userlist, setUserList] = useState([{userid: '852347582768262'},{userid: '2121'},{userid: '852347582768262'},{userid: '2121'},{userid: '852347582768262'},{userid: '2121'},{userid: '852347582768262'},{userid: '2121'},{userid: '852347582768262'},{userid: '2121'},{userid: '852347582768262'},{userid: '2121'},{userid: '852347582768262'},{userid: '2121'},{userid: '852347582768262'},{userid: '2121'},{userid: '852347582768262'},{userid: '2121'}]);
     const [activechat, setActiveChat] = useState({})
     return (
         <div className="app">
@@ -19,7 +22,7 @@ const Home = () => {
                 <div className="flex flex-wrap gap-2 flex-col items-center">
                     <div className="app_logo mt-2 hover:animate-pulse">
                         <a href=''>
-                            <img className=' server_logo w-12 h-13 rounded-full' src='https://cdn.discordapp.com/icons/169256939211980800/39dd0b5fc5a5c76648775342cf29601b.webp?size=96'  alt=''/>
+                            <img className=' server_logo w-12 h-13 rounded-full' src='https://cdn.discordapp.com/icons/613425648685547541/297546891c4ef5ddd97a913a5aa67762.webp?size=96'  alt=''/>
                         </a>
                     </div>
                     <div className="separator">
@@ -36,7 +39,7 @@ const Home = () => {
                     <hr className='text-dark mt-3' style={{ width:'100%'}}></hr>
                     <div className="w-48 mt-3">
                         <ListGroup className='menu-initial'>
-                            <ListGroup.Item active={true} className="teste" icon={HiUserAdd}>Amigos</ListGroup.Item>
+                                <ListGroup.Item active={true} icon={HiUserAdd}>Amigos</ListGroup.Item>
                                 <ListGroup.Item icon={HiInbox} disabled = {true}>Em Breve</ListGroup.Item>
                                 <ListGroup.Item icon={HiCloudDownload} disabled={true}>Em Breve</ListGroup.Item>
                         </ListGroup>
@@ -49,6 +52,24 @@ const Home = () => {
                             onClick={() => setActiveChat(userlist[key])}
                             />
                         ))}
+                        <div className="infos_user">
+                            <div className="infos_user_items">
+                                <img className='w-8 h-8 rounded-full' src='https://wallpapers-clan.com/wp-content/uploads/2022/07/funny-cat-1.jpg'  alt=''/>
+                                <div className="top-8 left-8 absolute  w-3 h-3 bg-red-400 border-2 border-gray-800 dark:border-gray-800 rounded-full"></div>
+                                <div className="infos_user_username">Z4</div>
+                                <div className="infos_buttons">
+                                    <div className="infos_user_btn">
+                                        <MicIcon  style={{color:'#b9bbbe', width:'20px'}}/>
+                                    </div>
+                                    <div className="infos_user_btn ml-3">
+                                        <HeadphonesIcon style={{color:'#b9bbbe', width:'20px'}}/>
+                                    </div>
+                                    <div className="infos_user_btn ml-3">
+                                        <SettingsIcon style={{color:'#b9bbbe', width:'20px'}}/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
