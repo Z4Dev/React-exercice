@@ -288,12 +288,13 @@ body {
     background-color: #292b2f;
     position: absolute;
     max-width: 100% !important;
-    top:93.3%;
-    left:5.5%;
+    top: 35.6em;
+    left: 4.7em;
     overflow: hidden;
     height: auto;
     width: 240px;
     justify-content: center;
+    height: 53px;
 }
 
 .infos_user_items {
