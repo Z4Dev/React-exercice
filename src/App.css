@@ -288,7 +288,7 @@ body {
     background-color: #292b2f;
     position: absolute;
     max-width: 100% !important;
-    bottom: 0.1em;
+    bottom: 0.02em;
     left: 4.7em;
     overflow: hidden;
     height: auto;
@@ -301,6 +301,7 @@ body {
     margin-left: 8px;
     display: flex;
     align-items: center;
+    margin-top:12px;
 }
 
 .infos_user_username {
