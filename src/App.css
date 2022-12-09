@@ -288,10 +288,11 @@ body {
     background-color: #292b2f;
     position: absolute;
     max-width: 100% !important;
-    margin-top: 313px;
-    margin-left: -10px;
+    top:93.3%;
+    left:5.5%;
+    overflow: hidden;
+    height: auto;
     width: 240px;
-    height: 52px;
     justify-content: center;
 }
 
