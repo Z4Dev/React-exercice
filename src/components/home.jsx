@@ -14,7 +14,7 @@ import {HiUserAdd,HiInbox,HiCloudDownload} from "react-icons/hi";
 
 const Home = () => {
     const [serverlist, setServerList] = useState([{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{}]);
-    const [userlist, setUserList] = useState([{userid: '852347582768262'},{userid: '2121'},{userid: '852347582768262'},{userid: '2121'},{userid: '852347582768262'},{userid: '2121'},{userid: '852347582768262'},{userid: '2121'},{userid: '852347582768262'},{userid: '2121'},{userid: '852347582768262'},{userid: '2121'},{userid: '852347582768262'},{userid: '2121'},{userid: '852347582768262'},{userid: '2121'},{userid: '852347582768262'},{userid: '2121'}]);
+    const [userlist, setUserList] = useState([{userid: '852347582768262'}]);
     const [activechat, setActiveChat] = useState({})
     return (
         <div className="app">
@@ -44,7 +44,7 @@ const Home = () => {
                                 <ListGroup.Item icon={HiCloudDownload} disabled={true}>Em Breve</ListGroup.Item>
                         </ListGroup>
 
-                        <div className="directmessages mt-4 justify-center ">MENSAGENS DIRETAS</div>
+                        <div className="directmessages justify-center" style={{marginTop:'18px'}}>MENSAGENS DIRETAS</div>
                         {userlist.map((item, key) => (
                             <User 
                             key={key} 
@@ -52,7 +52,7 @@ const Home = () => {
                             onClick={() => setActiveChat(userlist[key])}
                             />
                         ))}
-                        <div className="infos_user">
+                        {/* <div className="infos_user">
                             <div className="infos_user_items">
                                 <img className='w-8 h-8 rounded-full' src='https://wallpapers-clan.com/wp-content/uploads/2022/07/funny-cat-1.jpg'  alt=''/>
                                 <div className="top-8 left-8 absolute  w-3 h-3 bg-red-400 border-2 border-gray-800 dark:border-gray-800 rounded-full"></div>
@@ -69,7 +69,7 @@ const Home = () => {
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
             </div>
