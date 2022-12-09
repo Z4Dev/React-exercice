@@ -204,8 +204,16 @@ body {
 
 .emojiarea {
     overflow-y: hidden;
-    position: relative;
+    width: auto;
+    height: auto;
+    left: calc(17% * 4);
+    position: absolute;
     transition: all ease 0.3s;
+    max-width: 100% !important;
+    max-height: 100% !important;
+    top: calc(10vh * 5);
+    z-index: 3;
+    transform: translate(10%, -50%);
 }
 
 .messageItem {
@@ -278,6 +286,41 @@ body {
 
 .infos_user {
     background-color: #292b2f;
+    position: absolute;
+    left: 5.5vw;
+    top: 91.4%;
+    width: 240px;
+    height: 52px;
+    justify-content: center;
+}
+
+.infos_user_items {
+    margin-left: 8px;
+    display: flex;
+    align-items: center;
+}
+
+.infos_user_username {
+    font-size: 14px;
+    letter-spacing: 0;
+    font-style: normal;
+    font-weight: bold;   
+    color: rgb(220,221,222);
+    margin-left: 9px;
+    display: flex;
+    align-items: center;
+    font-family: sans-serif;
+    margin-right: 50px;
+}
+
+.infos_buttons {
+    display:flex;
+    margin-left: 15px;
+}
+/*
+
+.infos_user {
+    background-color: #292b2f;
     width: 240px;
     position: fixed;
     height: 52px;
@@ -311,3 +354,5 @@ body {
     display:flex;
     margin-left: 15px;
 }
+
+*/
