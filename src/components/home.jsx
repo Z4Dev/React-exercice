@@ -44,7 +44,7 @@ const Home = () => {
                                 <ListGroup.Item icon={HiCloudDownload} disabled={true}>Em Breve</ListGroup.Item>
                         </ListGroup>
 
-                        <div className="directmessages justify-center" style={{marginTop:'18px'}}>MENSAGENS DIRETAS</div>
+                        <div className="directmessages justify-center " style={{marginTop:'20px'}}>MENSAGENS DIRETAS</div>
                         {userlist.map((item, key) => (
                             <User 
                             key={key} 
@@ -54,7 +54,7 @@ const Home = () => {
                         ))}
                         <div className="infos_user">
                             <div className="infos_user_items">
-                                <img className='w-8 h-8 rounded-full mt-2' src='https://wallpapers-clan.com/wp-content/uploads/2022/07/funny-cat-1.jpg'  alt=''/>
+                                <img className='w-8 h-8 rounded-full' src='https://wallpapers-clan.com/wp-content/uploads/2022/07/funny-cat-1.jpg'  alt=''/>
                                 <div className="top-8 left-8 absolute  w-3 h-3 bg-red-400 border-2 border-gray-800 dark:border-gray-800 rounded-full"></div>
                                 <div className="infos_user_username">Z4</div>
                                 <div className="infos_buttons">
