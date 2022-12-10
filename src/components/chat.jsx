@@ -14,7 +14,8 @@ import { useState,useEffect} from 'react';
 
 import Message from './MessageItem'
 
-export default () => {
+export default ({user,activechat}) => {
+
 
     const inputRef = useRef(null);
 
@@ -24,17 +25,17 @@ export default () => {
             myRef.current?.scrollIntoView({ behavior: "smooth" })
         }
     
-        useEffect(() => {
-            scrollToBottom()
-        });
 
     const [menuemoji,setmenuemoji] = useState(false)
 
     const [text,setText] = useState('');
     const [list,setList] = useState([]);
 
-    const handleemoji = (e,emojiObject) => {
-        console.log(inputRef)
+    useEffect(() => {
+        scrollToBottom()
+    },[list]);
+
+    const handleemoji = (e,emojiObject) => { 
         inputRef.current.value += e.emoji
     }
 
@@ -49,7 +50,7 @@ export default () => {
 
                     <div className="relative chat-header-info ml-4">
                         <img className='w-5 h-5 rounded-full' src='https://cdn.discordapp.com/attachments/852683297590476850/1050613114288222268/At.png'  alt=''/>
-                        <div className="chat_username">Z4</div>
+                        <div className="chat_username">{activechat.name}</div>
                     </div>
 
                 </div>
@@ -72,18 +73,20 @@ export default () => {
             <div className="chat-body">
                 <div className="Dm">
                     <div className="userInfo">
-                        <img className='w-20 h-20 rounded-full' src='https://wallpapers-clan.com/wp-content/uploads/2022/07/funny-cat-1.jpg'  alt=''/>
-                            <div className="userinfo_name">Z4</div>
-                            <div className="userinfo_description">Este é o começo do seu histórico de mensagens diretas com @Z4</div>
+                        <img className='w-20 h-20 rounded-full' src={activechat.avatar}  alt=''/>
+                            <div className="userinfo_name">{activechat.name}</div>
+                            <div className="userinfo_description">Este é o começo do seu histórico de mensagens diretas com @{activechat.name}</div>
                     </div>
                     <div className="divider div-transparent"></div>
-
-                        {list.map((item,key)=> (
-                            <Message 
-                                key={key} 
-                                data={item}
-                            />
-                        ))}
+                        <div className="messagesabc">
+                            {list.map((item,key)=> (
+                                <Message 
+                                    key={key} 
+                                    data={item}
+                                    user={user}
+                                />
+                            ))}
+                        </div>
                         <div ref={myRef} className="teste"></div>
                 </div>
             </div>

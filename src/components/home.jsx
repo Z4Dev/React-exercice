@@ -8,21 +8,77 @@ import SettingsIcon from '@mui/icons-material/Settings';
 import HeadphonesIcon from '@mui/icons-material/Headphones';
 import MicIcon from '@mui/icons-material/Mic';
 
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 import {ListGroup} from 'flowbite-react'
 import {HiUserAdd,HiInbox,HiCloudDownload} from "react-icons/hi";
 
+import { Button } from 'flowbite-react';
+
+import Api from '../Api'
+
 const Home = () => {
-    const [serverlist, setServerList] = useState([{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{}]);
-    const [userlist, setUserList] = useState([{userid: '852347582768262'},{userid: '2121'},{userid: '852347582768262'},{userid: '2121'},{userid: '852347582768262'},{userid: '2121'},{userid: '852347582768262'},{userid: '2121'},{userid: '852347582768262'},{userid: '2121'},{userid: '852347582768262'},{userid: '2121'},{userid: '852347582768262'},{userid: '2121'},{userid: '852347582768262'},{userid: '2121'},{userid: '852347582768262'},{userid: '2121'}]);
+    const [serverlist, setServerList] = useState([{}]);
+    const [userlist, setUserList] = useState([]);
     const [activechat, setActiveChat] = useState({})
+    const [user,setUser] = useState(null)
+    
+    const handleloginbutton = async () => {
+        let result = await Api.loginPopup();
+        if(result) {
+            const newuser = {
+                id: result["additionalUserInfo"]["profile"].id,
+                username: result["additionalUserInfo"]["profile"].given_name,
+                avatar: result["additionalUserInfo"]["profile"].picture,
+                email: result["additionalUserInfo"]["profile"].email,
+            }
+            await Api.addUser(newuser)
+            setUser(newuser)
+        } else {
+            alert('Erro')
+        }
+    }
+
+    useEffect(() => {
+        if(user) {
+            const setUserAcccount = async() => {
+                const value = await Api.getUsersList(user.id)
+                return value
+            }
+            setUserAcccount().then(async (value) => {
+                await setUserList(value)
+            })
+        }
+      },[user]);
+
+      useEffect(() => {
+        if(user) {
+            const setUserAcccount = async() => {
+                const value = await Api.getUsersList(user.id)
+                return value
+            }
+            setUserAcccount().then(async (value) => {
+                await setUserList(value)
+            })
+        }
+      },[userlist])
+    
+    if(user === null) {
+        return (
+            <div className='flex justify-center items-center mt-5'>
+                <Button size="sm" onClick={handleloginbutton}>
+                    Login
+                </Button>
+            </div>
+        )
+    }
+
     return (
         <div className="app">
             <div className="serverlist">
                 <div className="flex flex-wrap gap-2 flex-col items-center">
                     <div className="app_logo mt-2 hover:animate-pulse">
                         <a href=''>
-                            <img className=' server_logo w-12 h-13 rounded-full' src='https://cdn.discordapp.com/icons/613425648685547541/297546891c4ef5ddd97a913a5aa67762.webp?size=96'  alt=''/>
+                            <img className=' server_logo w-12 h-13 rounded-full' src='https://www.freepnglogos.com/uploads/discord-logo-png/discord-icon-24.png'  alt=''/>
                         </a>
                     </div>
                     <div className="separator">
@@ -44,19 +100,20 @@ const Home = () => {
                                 <ListGroup.Item icon={HiCloudDownload} disabled={true}>Em Breve</ListGroup.Item>
                         </ListGroup>
 
-                        <div className="directmessages mt-4 justify-center ">MENSAGENS DIRETAS</div>
+                        <div className="directmessages justify-center " style={{marginTop:'20px'}}>MENSAGENS DIRETAS</div>
                         {userlist.map((item, key) => (
                             <User 
-                            key={key} 
-                            active = {activechat.userid == userlist[key].userid}
+                            key={key}
+                            infos={item}
+                            active = {activechat.id == userlist[key].id}
                             onClick={() => setActiveChat(userlist[key])}
                             />
                         ))}
                         <div className="infos_user">
                             <div className="infos_user_items">
-                                <img className='w-8 h-8 rounded-full' src='https://wallpapers-clan.com/wp-content/uploads/2022/07/funny-cat-1.jpg'  alt=''/>
+                                <img className='w-8 h-8 rounded-full' referrerPolicy="no-referrer" src= {user.avatar}  alt=''/>
                                 <div className="top-8 left-8 absolute  w-3 h-3 bg-red-400 border-2 border-gray-800 dark:border-gray-800 rounded-full"></div>
-                                <div className="infos_user_username">Z4</div>
+                                <div className="infos_user_username">{user.username}</div>
                                 <div className="infos_buttons">
                                     <div className="infos_user_btn">
                                         <MicIcon  style={{color:'#b9bbbe', width:'20px'}}/>
@@ -73,8 +130,11 @@ const Home = () => {
                     </div>
                 </div>
             </div>
-            {activechat.userid !== undefined &&
-                <Chat/>
+            {activechat.id !== undefined &&
+                <Chat
+                    user = {user}
+                    activechat = {activechat}
+                />
             }
         </div>
     )
